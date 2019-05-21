@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TesteBRConselhos.Models.Professor>
+
+@{
+    ViewBag.Title = "ProfessoresComAlunosEntreQuinzeEDezessete";
+}
+
+<h2>Professores com Alunos Entre Quinze E Dezessete Anos</h2>
+
+<a class="btn btn-primary" style="margin-bottom:10px" href="/Professor/Create">Novo</a>
+
+<table class="table">
+    <tr>
+        <th>
+            Professor
+        </th>
+        <th>
+            Alunos
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <table style="border-collapse:separate;border-spacing:10px 1px">
+                    <tr>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Idade
+                        </th>
+                    </tr>
+                    @foreach (var aluno in item.Alunos)
+                    {
+                        <tr>
+                            <td>
+                                @aluno.Nome
+                            </td>
+                            <td>
+                                @aluno.idade
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

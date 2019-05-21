@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TesteBRConselhos.Models.Professor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Professores</h2>
+
+
+<a class="btn btn-primary" style="margin-bottom:10px" href="/Professor/Create">Novo</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
